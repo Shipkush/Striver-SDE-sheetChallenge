@@ -1,0 +1,17 @@
+bool isPalindrome(LinkedListNode<int> *head) {
+     vector<int> res;
+        while(head!=NULL)
+        {
+            res.push_back(head->data);
+            head=head->next;
+        }
+        int n=res.size();
+        for(int i=0;i<(n/2);i++)
+        {
+            if(res[i]!=res[n-i-1])
+            return false;
+        }
+       
+        return true;
+
+}
