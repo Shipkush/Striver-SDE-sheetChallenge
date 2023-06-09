@@ -1,0 +1,38 @@
+HARD PROBLEM : BINARY SEARCH ON ANSWERS
+
+
+#include <bits/stdc++.h> 
+bool OK(int mid, vector<int>p,int c)
+ {
+    
+     long long player=1,prev=p[0];
+     for(int i=1;i<p.size();i++)
+     {
+         if(p[i]-prev >=mid)
+         {
+             player++;
+             prev=p[i];
+         }
+     }
+     return player>=c;
+ }
+int chessTournament(vector<int> p , int n ,  int c){
+
+	sort(p.begin(),p.end());
+    long long low=1,high=(p[n-1]-p[0]),ans=0;
+	while(low<=high)
+	{
+		long long mid=low+(high-low)/2;
+		if(OK(mid ,p,c))
+		{
+			ans=mid;
+			low=mid+1;
+		}
+		else
+		{
+			high=mid-1;
+		}
+	}
+	return ans;
+
+}
